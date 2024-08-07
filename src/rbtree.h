@@ -2,6 +2,9 @@
 #define _RBTREE_H_
 
 #include <stddef.h>
+// ===
+#include <stdio.h>
+// ===
 
 typedef enum { RBTREE_RED, RBTREE_BLACK } color_t;
 
@@ -11,7 +14,7 @@ typedef struct node_t {
   color_t color;
   key_t key;
   struct node_t *parent, *left, *right;
-} node_t;
+} node_t; //32byte : 1 node
 
 typedef struct {
   node_t *root;
