@@ -8,6 +8,7 @@ void delete_fix(rbtree *,node_t * );
 void transplant(rbtree *,node_t *,node_t * );
 node_t * findSuccessor(rbtree *,node_t *);
 int inorder_rbtree(const rbtree *, key_t *,  int , node_t * );
+void freeAction(node_t *);
 
 // ================================ CREATE RBTREE ==============================
 rbtree *new_rbtree(void)
@@ -330,8 +331,12 @@ int rbtree_erase(rbtree *t, node_t *p)
   if (y_color == RBTREE_BLACK){
     delete_fix(t,x);
   }
-  free(p);
+  freeAction(p);
   return 0;
+}
+void freeAction(node_t *p){
+  free(p);
+  p=NULL;
 }
 
 void delete_fix(rbtree *t, node_t *x){
